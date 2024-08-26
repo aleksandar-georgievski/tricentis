@@ -43,7 +43,7 @@ public class RegisterTest extends Base {
     }
     @Test(priority = 5)
     public void verifyRegisteringWithEmailThatAlreadyExist() {
-        registerPage.register(prop.getProperty("firstName"), prop.getProperty("lastName"), prop.getProperty("email"), prop.getProperty("validPassword"), prop.getProperty("validPassword"));
+        registerPage.register(prop.getProperty("firstName"), prop.getProperty("lastName"), prop.getProperty("validEmail"), prop.getProperty("validPassword"), prop.getProperty("validPassword"));
         Assert.assertEquals(registerPage.getEmailExistErrorMessageText(), prop.getProperty("emailAlreadyExistError"));
     }
 }
