@@ -71,7 +71,6 @@ public class StandAloneTest {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".confirm-order-next-step-button"))));
         driver.findElement(By.cssSelector(".confirm-order-next-step-button")).click();
         wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector("#confirm-order-please-wait"))));
-//        Assert.assertTrue(driver.findElement(By.tagName("h1")).isDisplayed());
         String successHeadingMessage = driver.findElement(By.xpath("//div[@class='title']/strong")).getText();
         Assert.assertEquals(successHeadingMessage, "Your order has been successfully processed!");
         driver.findElement(By.cssSelector(".order-completed-continue-button")).click();

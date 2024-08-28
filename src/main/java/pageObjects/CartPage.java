@@ -33,18 +33,23 @@ public class CartPage extends BasePage{
     WebElement addToCartPickedProductButton;
     @FindBy(className = "page-title")
     WebElement shoppingCartPageTitle;
+    @FindBy(css = ".order-summary-content")
+    WebElement shoppingCartEmptyText;
     @FindBy(css = ".update-cart-button")
     WebElement updateShoppingCartPageButton;
     @FindBy(css = ".cart-item-row")
     List<WebElement> productsInCart;
+    @FindBy(xpath = "//button[@value='checkout']")
+    WebElement checkoutButton;
+    @FindBy(id = "termsofservice")
+    WebElement termsServiceCheckbox;
+    @FindBy(xpath = "//button[@role='button']")
+    WebElement alertWindowCloseButton;
+
     By addToCartButtons = By.cssSelector(".button-2");
     By addToCartButtonsFeaturedProducts = By.cssSelector(".product-box-add-to-cart-button");
     By removeProductsFromCartCheckbox = By.cssSelector("input[name='removefromcart']");
 
-//    public WebElement getProductByName(String productName) {
-//        return products.stream()
-//                .filter(product -> product.getText().contains(productName)).findFirst().orElse(null);
-//    }
     public boolean getAlertMessage() {
         return alertMessage.isDisplayed();
     }
@@ -60,6 +65,23 @@ public class CartPage extends BasePage{
         WebElement product = getProductByName(products,productName);
         product.findElement(addToCartButtonsFeaturedProducts).click();
         waitForElementToAppear(alertMessage);
+    }
+    public void navigateToShoppingCartWithHavingAProduct(String productName) {
+        addProductToCartFromFeaturedProducts(productName);
+        shoppingCartHeaderLink.click();
+        checkoutButton.click();
+        waitForElementToAppear(alertWindowCloseButton);
+        alertWindowCloseButton.click();
+    }
+    public String navigateToShoppingCartPageWithoutProduct(){
+        shoppingCartHeaderLink.click();
+        return shoppingCartEmptyText.getText();
+    }
+    public void navigateToCheckoutSection(String productName) {
+        addProductToCartFromFeaturedProducts(productName);
+        shoppingCartHeaderLink.click();
+        termsServiceCheckbox.click();
+        checkoutButton.click();
     }
     public void removeProductFromCart() {
         clickOnShoppingCartHeaderLink();

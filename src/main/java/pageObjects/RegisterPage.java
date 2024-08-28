@@ -37,30 +37,11 @@ public class RegisterPage extends BasePage {
     WebElement emailAlreadyExistErrorMessage;
     @FindBy(css = ".header-logo")
     WebElement headerLogo;
+    @FindBy(xpath = "//div[@class='page-title']/h1")
+    WebElement registerPageTitle;
 
-    public void clickOnRegisterHeadingLink() {
-        registerHeadingLink.click();
-    }
-    public void selectGenderOption() {
-        genderOptionMale.click();
-    }
-    public void enterFirstName(String firstNameText) {
-        firstName.sendKeys(firstNameText);
-    }
-    public void enterLastName(String lastNameText) {
-        lastName.sendKeys(lastNameText);
-    }
-    public void enterEmail(String emailText) {
-        email.sendKeys(emailText);
-    }
-    public void enterPassword(String passwordText) {
-        password.sendKeys(passwordText);
-    }
-    public void enterConfirmPassword(String confirmPasswordText) {
-        confirmPassword.sendKeys(confirmPasswordText);
-    }
-    public void clickOnRegisterButton() {
-        registerButton.click();
+    public String getRegisterPageTitle() {
+        return registerPageTitle.getText();
     }
     public void clickOnRegisterConfirmButton() {
         confirmRegistrationButton.click();
@@ -78,9 +59,8 @@ public class RegisterPage extends BasePage {
     public boolean checkIfHeaderLogoIsDisplayed() {
         return headerLogo.isDisplayed();
     }
-
     public void register(String firstNameText, String lastNameText, String emailText, String passwordText, String confirmPasswordText) {
-        registerHeadingLink.click();;
+        registerHeadingLink.click();
         genderOptionMale.click();
         firstName.sendKeys(firstNameText);
         lastName.sendKeys(lastNameText);
@@ -88,7 +68,6 @@ public class RegisterPage extends BasePage {
         password.sendKeys(passwordText);
         confirmPassword.sendKeys(confirmPasswordText);
         registerButton.click();
-//        confirmRegistrationButton.click();
     }
 
 }

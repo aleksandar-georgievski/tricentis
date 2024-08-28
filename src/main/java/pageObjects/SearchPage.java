@@ -53,7 +53,6 @@ public class SearchPage extends BasePage{
     public String getNoProductsMessageError() {
         return noProductsFoundMessage.getText();
     }
-
     public void addProductThroughSearchFieldInCart(String productName) {
         searchField.sendKeys(productName);
         searchButton.click();

@@ -31,7 +31,6 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(findBy));
     }
-
     public WebElement getProductByName(List<WebElement> products, String productName) {
         return products.stream()
                 .filter(product -> product.getText().contains(productName)).findFirst().orElse(null);

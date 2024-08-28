@@ -11,7 +11,6 @@ import pageObjects.LoginPage;
 public class LoginTest extends Base {
     WebDriver driver;
     public LoginPage loginPage;
-
     @BeforeMethod
     public void setUp() {
         driver = initializeBrowserAndOpenApplication("firefox");
@@ -27,19 +26,16 @@ public class LoginTest extends Base {
         loginPage.login(prop.getProperty("validEmail"), prop.getProperty("validPassword"));
         Assert.assertEquals(loginPage.getTheEmailInHeaderSection(), prop.getProperty("validEmail"));
     }
-
     @Test(priority = 2)
     public void verifyLoginWithoutProvidingEmailIntoEmailField() {
         loginPage.login("", prop.getProperty("validPassword"));
         Assert.assertEquals(loginPage.checkIfLoginWarningMessageIsDisplayed(), prop.getProperty("loginWithInvalidEmail"));
     }
-
     @Test(priority = 3)
     public void verifyLoginWithoutProvidingPasswordIntoPasswordField() {
         loginPage.login(prop.getProperty("validEmail"), "");
         Assert.assertEquals(loginPage.checkIfLoginWarningMessageIsDisplayed(), prop.getProperty("loginWithInvalidPassword"));
     }
-
     @Test(priority = 4)
     public void verifyLoginWithoutProvidingAnyCredentialsIntoFields() {
         loginPage.login("", "");

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Suite">
+<test verbose="2" name="D:/Coding/Selenium_Project/SwagLabs">
+    <classes>
+        <class name="testCases.RegisterTest"/>
+        <class name="testCases.LoginTest"/>
+        <class name="testCases.ForgotPasswordTest"/>
+        <class name="testCases.CartTest"/>
+        <class name="testCases.SearchTest"/>
+        <class name="testCases.CheckoutTest"/>
+
+    </classes>
+</test>
+</suite>
